@@ -98,8 +98,7 @@ public class Main extends Applet {
 		model = new Model(new Coord(x0x, x0y), new Coord(v0x, v0y),
 				  new Coord(x1x, x1y), new Coord(v1x, v1y),
 				  m0, m1);
-		view = new View();
-		model.addObserver(view);
+		view = new View(model);
 		add(view);
 		thread = new Thread(model);
 		thread.start();

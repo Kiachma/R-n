@@ -24,22 +24,22 @@ class View extends Canvas implements Observer {
 	protected static final int R = 10;
 	protected Trajectory trajectory1, trajectory2;
 	
-	View() {
+	View(Observable model) {
 		
 		width = DFLT_WIDTH;
 		height = DFLT_HEIGHT;
 		trajectory1 = new Trajectory();
 		trajectory2 = new Trajectory();
-		
+		model.addObserver(this);
 		
 	}
 	
-	View(int width, int height) {
+	View(Observable model, int width, int height) {
 		this.width = width;
 		this.height = height;
 		trajectory1 = new Trajectory();
 		trajectory2 = new Trajectory();
-	
+		model.addObserver(this);
 		
 		// YOUR CODE HERE
 		// Let the Subject know that we want to observe it
