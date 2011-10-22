@@ -173,6 +173,9 @@ public class Snake implements Runnable {
     public void set3dGraphics() {
 	// YOUR CODE HERE
 	// create the new renderer
+    	Graphics3D GraphicsAdapter = new Graphics3D();
+    	renderer = new Graphics3DAdapter(GraphicsAdapter);
+    	renderer.setSnakeColor(Color.black);
 	// initialize the colour of the snake
 	// otherwise it is null and you'll get a NullPointerException
     }
@@ -184,6 +187,8 @@ public class Snake implements Runnable {
     public void setABCGraphics() {
 	// YOUR CODE HERE
 	// create the new renderer
+    renderer = new ABCFacade();
+    renderer.setSnakeColor(Color.black);
 	// initialize the colour of the snake
 	// otherwise it is null and you'll get a NullPointerException
     }
@@ -195,6 +200,8 @@ public class Snake implements Runnable {
     public void setShadowGraphics(){
 	// YOUR CODE HERE
 	// create the new renderer
+    	renderer=new Decorator(renderer);
+    	renderer.setSnakeColor(Color.black);
 	// initialize the colour of the snake
 	// otherwise it is null and you'll get a NullPointerException
     }
