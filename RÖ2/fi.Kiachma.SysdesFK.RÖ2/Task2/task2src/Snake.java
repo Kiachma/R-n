@@ -136,8 +136,9 @@ public class Snake implements Runnable {
 	if (controller == null)
 	    dir = KeyEvent.VK_LEFT;
 	else
-	    dir = controller.getDirection();
-
+	    //dir = controller.getDirection();
+		 controller = new ControllerKey();
+		dir = controller.getDirection();
 	// YOUR CODE HERE
 	// create the new controller, set the old direction to the new
 	// controller
