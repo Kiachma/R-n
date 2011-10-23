@@ -1,0 +1,47 @@
+Task 4
+
+I recommend that you use Eclipse or any other IDE with support for refactoring to complete this task. Eclipse has functions to extract an interface form an existing class, rename classes and variables, add get and set methods, etc... This can save a lot of time when implementing tasks 4.1 - 4.4.
+
+You need to make sure that all the jar files in the dist folder are included in your Java class path. If you use Eclipse, right-click in your project, select properties, Java build path, Libraries, Add JARs... find the dist folder and add all the existing jar files.
+
+4.1 Open-Closed: 
+- We want a Human player as well, and a Computer player. They
+implement a common Player interface.
+- We want the Board to be an interface, and a BoardTextualImpl to be
+  the textual implementation of this.
+
+4.2 Separation of Concerns
+- Display the board with some helper class. This should also be an
+  interface, so that we have a BoardDisplayTextualImpl class that
+  implements it.
+
+4.3 Game
+- A Game class should be created which handles the board, displaying the board, the players.
+
+4.4 Bad Interface
+- Player classes can call set, even though this should not be
+  allowed. They should return a (x, y) coordinate pair instead in a
+  (new) Move object, and receive a ReadOnlyBoard instance as input.
+- The ReadOnlyBoard should just delegate all calls to the real Board
+  implementation, but stop execution of Board.set() by raising an
+  exception.
+
+4.5 Spring IOC and dependency injection
+- We want the following classes to be pluggable using Spring IoC
+  - Game
+    - Injected with Board, Player 1, Player 2
+  - Board / BoardTextualImpl
+    - Width, height as constructor arguments
+  - Player / HumanPlayer, ComputerPlayer
+  - BoardDisplay
+- To know more about Spring read the course slides and the spring documentation at 
+
+http://static.springsource.org/spring/docs/3.0.4.RELEASE/spring-framework-reference/html/beans.html
+
+Bugs:
+
+- Performance bug: as the board fills up, we will use more and more
+  time to figure out the next location to place our mark, due to using
+  Random() instead of thinking. You don't have to care about this.
+
+

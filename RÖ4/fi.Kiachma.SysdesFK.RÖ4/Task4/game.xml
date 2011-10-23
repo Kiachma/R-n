@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="aGame" class="fi.abo.cs.fiveinline.Game"> 
+	<constructor-arg ref="boardBean"/>
+	<constructor-arg ref="player1Bean"/>
+	<constructor-arg ref="player2Bean"/>
+
+</bean>
+
+<bean id="player1Bean" class="fi.abo.cs.fiveinline.ComputerPlayer"> 
+ <constructor-arg type="char"><value>X</value></constructor-arg>
+</bean>
+<bean id="player2Bean" class="fi.abo.cs.fiveinline.ComputerPlayer"> 
+ <constructor-arg type="char"><value>O</value></constructor-arg>
+</bean>
+<bean id="boardBean" class="fi.abo.cs.fiveinline.BoardTextualImpl"> 
+ <constructor-arg type="int"><value>10</value></constructor-arg>
+ <constructor-arg type="int"><value>20</value></constructor-arg>
+</bean>
+
+
+
+</beans>
+
