@@ -1,17 +1,20 @@
 package src;
 
 public class RemoveLadyBird extends AbstractCommand {
-
+	private LadyBird l;
+	
+	public RemoveLadyBird(LadyBird b) {
+		this.l = l;
+	}
 	@Override
 	public void Execute() {
-		// TODO Auto-generated method stub
-
+		if (l != null) {	//checks that the bird exists
+			LadyBirdManager.instance().removeLadyBird(l);
+		}
 	}
 
 	@Override
-	public void Unexecute() {
-		// TODO Auto-generated method stub
-
+	public void Unexecute() {	//puts the bird back
+		LadyBirdManager.instance().addLadyBird(l);
 	}
-
 }

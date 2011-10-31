@@ -79,9 +79,8 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 			if (LadyBirdManager.instance().isLadyBirdAt(evt.getX(), evt.getY())) {
 				LadyBirdManager.instance().markLadyBirdAt(evt.getX(), evt.getY());						
 			} else {
-				/**
-				 * Add code for the move command here.
-				 */
+				AbstractCommand move = new MoveCommand(LadyBirdManager.instance().getMarkedLadyBird(), evt.getX(), evt.getY());
+				addCommand(move);
 			}
 		}
 		repaint();
@@ -96,26 +95,50 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 			/**
 			 * Write code use the add another ladybird command here.
 			 */
+			AbstractCommand addBird= new AddLadyBird();
+			addCommand(addBird);
 		} else if ('r' == evt.getKeyChar()) {
 			/**
 			 * Write code to remove a ladybird here.
 			 */
+			if (LadyBirdManager.instance().getMarkedLadyBird() != null) {	
+				AbstractCommand removebird = new RemoveLadyBird(LadyBirdManager.instance().getMarkedLadyBird());
+				addCommand(removebird);
+			} else {
+				System.out.println("no bird selected");
+			}
 		} else if ('b' == evt.getKeyChar()) {
 			/**
 			 * Write code to use the commad to make the ladybirds bigger here..
 			 */
+			if (LadyBirdManager.instance().getMarkedLadyBird() != null) {	
+				AbstractCommand biggerbird = new BiggerCommand(LadyBirdManager.instance().getMarkedLadyBird());
+				addCommand(biggerbird);
+			} else {
+				System.out.println("no bird selected");
+			}
 		} else if ('s' == evt.getKeyChar()) {
 			/**
 			 * Write code to use the commad to make the ladybirds smaller here..
 			 */
+			if (LadyBirdManager.instance().getMarkedLadyBird() != null) {	
+				AbstractCommand smallerbird = new SmallerCommand(LadyBirdManager.instance().getMarkedLadyBird());
+				addCommand(smallerbird);
+			} else {
+				System.out.println("no bird selected");
+			}
 		} else if ('c' == evt.getKeyChar()) {
 			/**
 			 * Write code to change to colors of the ladybirds.
 			 */
+			if (LadyBirdManager.instance().getMarkedLadyBird() != null) {	
+				AbstractCommand colorbird = new ChangeColorCommand(LadyBirdManager.instance().getMarkedLadyBird());
+				addCommand(colorbird);
+			} else {
+				System.out.println("no bird selected");
+			}
 		} else if ('u' == evt.getKeyChar()) {
-			/**
-			 * Write code to undo the last commad here.
-			 */
+			undoCommand();
 		}
 		repaint();
 	}

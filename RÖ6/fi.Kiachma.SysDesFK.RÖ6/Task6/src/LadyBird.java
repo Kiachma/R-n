@@ -1,3 +1,5 @@
+package src;
+
 /*
  * Created on 2005-apr-26
  *
@@ -8,6 +10,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**
@@ -15,7 +19,8 @@ import java.awt.geom.Point2D;
  * @author Peter Sunnergren
  */
 
-public class LadyBird {
+public class 
+LadyBird implements Observer {
 	private double angle = 0.0;
 	private int x;
 	private int y;
@@ -26,8 +31,11 @@ public class LadyBird {
 	private AbstractState state; 
 	private LadyBirdSettings settings;
 	
+	
 	public LadyBird () {
-		settings = new LadyBirdSettings(31, Color.red, Color.black);
+		settings = new LadyBirdSettings();
+		settings = settings.setSingletonSettings(31, Color.red, Color.black);
+		settings.addObserver(this);
 
 		x = (int)Math.round(Math.random() * 400);
 		y = (int)Math.round(Math.random() * 400);
@@ -158,7 +166,10 @@ public class LadyBird {
 	 * @param size Half the ladybirds size (radius).
 	 */
 	public void setSize(int size) {
-		settings = new LadyBirdSettings(size, settings.getColor(), settings.getDotColor()); 
+		settings.setSettings(size, settings.getColor(), settings.getDotColor());
+		settings.hasChanged();
+		settings.notifyObservers();
+		
 	}
 	
 	/**
@@ -190,7 +201,9 @@ public class LadyBird {
 	 * @param dotColor Color of dots and border.
 	 */
 	public void setColors(Color color, Color dotColor) {
-		settings = new LadyBirdSettings(settings.getHalfLadyBirdSize(), color, dotColor); 
+		settings.setSettings(settings.getHalfLadyBirdSize(), color, dotColor);
+		settings.hasChanged();
+		settings.notifyObservers();
 	}
 	
 	/**
@@ -218,4 +231,11 @@ public class LadyBird {
 		goalX = x;
 		goalY = y;
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

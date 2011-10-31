@@ -1,29 +1,43 @@
+package src;
+
 /*
  * Created on 2005-apr-28
  */
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Contains the settings that can be done on a ladybird.
  * @author x05petsu
  */
-public class LadyBirdSettings {
+public class LadyBirdSettings extends Observable {
 	private int halfLadyBirdSize;
 	private int halfSizeOfSpot;
 	private int stepSize;
 	private int numberOfDots;
 	private Color color;
 	private Color dotColor;
+	private ArrayList observers;
+	private static LadyBirdSettings singletonSettings;
 	
 	/**
 	 * Calculates and sets values depending on the input. 
-	 * @param halfLadyBirdSize The radius of the ladybird.
+	 * @param halfLadyBirdSize The radius of the ladybird.}
 	 * @param color The base color. 
 	 * @param dotColor The color of the dots and lines.
 	 */
-	public LadyBirdSettings (int halfLadyBirdSize, Color color, Color dotColor) {		
+	public LadyBirdSettings setSingletonSettings(int halfLadyBirdSize, Color color, Color dotColor) { //sets settings on first run, else returns singletonsettings
+		if (singletonSettings == null) {
+			singletonSettings = new LadyBirdSettings();
+			singletonSettings.setSettings(halfLadyBirdSize, color, dotColor);
+		}
+		return singletonSettings;
+	}
+	public void setSettings (int halfLadyBirdSize, Color color, Color dotColor) {		
 		this.halfLadyBirdSize = halfLadyBirdSize;
 		this.numberOfDots = halfLadyBirdSize / 10;		
 		this.halfSizeOfSpot = (int)(Math.round(Point2D.distance(
@@ -34,8 +48,13 @@ public class LadyBirdSettings {
 		this.stepSize = halfLadyBirdSize / 3;
 		this.color = color;
 		this.dotColor = dotColor;
+		observers=new ArrayList();
 	}
 
+
+	public LadyBirdSettings() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Gets the color.
 	 * @return Returns the color.
@@ -78,4 +97,5 @@ public class LadyBirdSettings {
 	public int getStepSize() {
 		return stepSize;
 	}
+
 }
