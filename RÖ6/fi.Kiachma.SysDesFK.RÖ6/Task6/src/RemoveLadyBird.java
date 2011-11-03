@@ -3,7 +3,7 @@ package src;
 public class RemoveLadyBird extends AbstractCommand {
 	private LadyBird l;
 	
-	public RemoveLadyBird(LadyBird b) {
+	public RemoveLadyBird(LadyBird l) {
 		this.l = l;
 	}
 	@Override
