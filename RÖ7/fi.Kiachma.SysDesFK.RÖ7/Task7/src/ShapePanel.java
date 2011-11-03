@@ -2,7 +2,7 @@
  * Created on 2005-apr-17
  *
  */
-package lab4Source;
+package src;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

@@ -1,7 +1,7 @@
 /*
  * Created on 2005-apr-21
  */
-package lab4Source;
+package src;
 
 import java.awt.Color;
 import java.awt.Graphics;

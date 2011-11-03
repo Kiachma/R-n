@@ -2,7 +2,7 @@
  * Created on 2005-apr-18
  *
  */
-package lab4Source;
+package src;
 
 /**
  * A class that creates shapes according to rules about size.
@@ -97,6 +97,7 @@ public class ShapeFactory {
 						
 			if (s.getParent().hasChildren()) {
 				s.setSibling(s.getParent().getLastChild());			
+				s.removeOverlap(r);
 				/**
 				 * This is where the code for the removal of overlap between shapes should be put.
 				 */

@@ -2,7 +2,7 @@
  * Created on 2005-apr-20
  *
  */
-package lab4Source;
+package src;
 
 /**
  * An abstract class describing how an iterator looks like.

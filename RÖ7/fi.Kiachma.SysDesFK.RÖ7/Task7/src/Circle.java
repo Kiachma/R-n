@@ -1,7 +1,7 @@
 /*
  * Created on 2005-apr-18
  */
-package lab4Source;
+package src;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Arc2D;

@@ -2,7 +2,7 @@
  * Created on 2005-apr-20
  *
  */
-package lab4Source;
+package src;
 
 /**
  * The abstract super class to all the visitors accepted by the shapes.

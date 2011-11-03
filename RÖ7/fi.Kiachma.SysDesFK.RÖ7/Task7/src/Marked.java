@@ -2,7 +2,7 @@
  * Created on 2005-apr-18
  *
  */
-package lab4Source;
+package src;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

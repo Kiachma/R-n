@@ -2,7 +2,7 @@
  * Created on 2005-apr-17
  *
  */
-package lab4Source;
+package src;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;
@@ -36,7 +36,7 @@ abstract public class AbstractShape {
 	 * Removes the overlap of the shapes by resizing the bounds of the new shape so that it dose not overlap with this one.
 	 * @param bounds The bounds of the new shape.
 	 */
-	private void removeOverlap(Rectangle bounds) {
+	void removeOverlap(Rectangle bounds) {
 		Rectangle thisBounds = new Rectangle(getX(), getY(), getWidth(), getHeight());
 		
 		if (thisBounds.contains(bounds) ||
